@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Link to Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+  body {
+    background-color: #242459; /* Set the background color for the entire page */
+    color: white; /* Set the text color for the entire page */
+    font-family: Arial, sans-serif; /* Set a default font family */
+    margin: 0;
+    padding: 0;
+  }
+
+  .accordion {
+    background-color: #242459; /* Set the background color for the accordion */
+    color: white; /* Set the text color for the accordion */
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    position: relative;
+  }
+
+  .accordion::after {
+    content: '\f078'; /* Unicode for right-facing arrow */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: white; /* Set the color for the arrow */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .active::after {
+    content: '\f077'; /* Unicode for down-facing arrow */
+  }
+
+  .panel {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    color: white; /* Set the text color for the panel */
+  }
+</style>
+</head>
+<body>
+  <button class="accordion">Unable to Connect</button>
+
+  <div class="panel">
+      <p>If you're unable to establish a connection to the VPN, consider changing the server location and try reconnecting.</p>
+  </div>
+  <button class="accordion">Unable to Fetch Locations</button>
+  
+  <div class="panel">
+      <p>If you're unable to fetch locations, please try switching to a different network.</p>
+  </div>
+  <button class="accordion">VPN Disconnecting Frequently</button>
+  
+  <div class="panel">
+    <p>If your VPN keeps disconnecting, check your internet connection for stability and consider changing the server location.</p>
+  </div>
+
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
